@@ -21,7 +21,7 @@ export const company = {
   brand: "Yaohui Medical",
   companyName: "Anji Yaohui Medical Products Co., Ltd.",
   chineseDisplayName: "安吉耀辉医疗用品有限公司",
-  email: "judy@anjiyaohuimedical.com",
+  email: "info@yaohuimedicalbandage.com",
   phones: ["18967285819", "15868226853"],
   address: "Tianzi Lake Industrial Park, Anji County, Zhejiang, China",
   tagline: "Orthopedic bandage manufacturing for global medical supply partners",

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, Factory, Globe2, PackageCheck, Sparkles } from "lucide-react";
 import { InquiryBand } from "@/components/site-shell";
+import { AnimatedStatValue } from "@/components/animated-stat-value";
 import { company, factoryHighlights, faqs, heroStats, products } from "@/lib/site-data";
 
 export default function HomePage() {
@@ -26,7 +27,9 @@ export default function HomePage() {
             <div className="stats-grid">
               {heroStats.map((stat) => (
                 <div className="stat-card" key={stat.label}>
-                  <strong>{stat.value}</strong>
+                  <strong>
+                    <AnimatedStatValue stat={stat} />
+                  </strong>
                   <span>{stat.label}</span>
                 </div>
               ))}

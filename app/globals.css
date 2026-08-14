@@ -360,7 +360,7 @@ p {
 }
 
 .stats-grid {
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: 46px;
 }
 
@@ -379,6 +379,7 @@ p {
 }
 
 .stat-card {
+  min-width: 0;
   padding: 22px;
 }
 
@@ -388,7 +389,21 @@ p {
   font-size: 32px;
 }
 
-.stat-card span {
+.animated-stat-value {
+  display: grid;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+}
+
+.animated-stat-value > span {
+  grid-area: 1 / 1;
+}
+
+.stat-value-sizer {
+  visibility: hidden;
+}
+
+.stat-card > span {
   color: var(--muted);
   font-size: 13px;
   font-weight: 800;

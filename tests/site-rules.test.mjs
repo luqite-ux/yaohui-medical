@@ -28,6 +28,12 @@ assert.match(combined, /mobile-navigation/, "header must include a mobile naviga
 assert.match(combined, /logo-mark\.png/, "site chrome must use the visible customer logo asset");
 assert.match(combined, /hero-copy/, "homepage banner must isolate copy from brochure imagery");
 assert.match(combined, /rgba\(255,\s*255,\s*255,\s*0\.94\)/, "homepage banner copy layer must use the approved 94% white foundation");
+assert.match(combined, /AnimatedStatValue/, "hero statistics must use the count-up component");
+assert.match(combined, /IntersectionObserver/, "count-up motion must start from viewport visibility");
+assert.match(combined, /requestAnimationFrame/, "count-up motion must update on animation frames");
+assert.match(combined, /prefers-reduced-motion/, "count-up motion must respect reduced-motion preferences");
+assert.match(combined, /\.stat-card\s*>\s*span/, "stat labels must not override nested animated number sizing");
+assert.match(combined, /grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/, "hero stat cards must keep equal column widths");
 assert.doesNotMatch(combined, /漏/, "site must not contain corrupted footer text");
 assert.match(combined, /inquiry/i, "site must include inquiry entry points");
 assert.doesNotMatch(combined, /\b(price|prices|cart|checkout|payment|pay online)\b/i, "B2B site must not expose commerce language");

@@ -49,10 +49,10 @@ export const navigation = [
 ];
 
 export const heroStats = [
-  { value: company.established, label: "Established" },
-  { value: company.monthlyCapacity, label: "Monthly capacity" },
-  { value: company.factoryArea, label: "Factory area" },
-  { value: "ISO 13485", label: "Quality system" }
+  { value: company.established, label: "Established", start: 2000, end: 2010, prefix: "", suffix: "", grouping: false, duration: 1200 },
+  { value: company.monthlyCapacity, label: "Monthly capacity", start: 0, end: 600000, prefix: "", suffix: " rolls", duration: 1200 },
+  { value: company.factoryArea, label: "Factory area", start: 0, end: 4000, prefix: "", suffix: "+ m²", duration: 1200 },
+  { value: "ISO 13485", label: "Quality system", start: 13000, end: 13485, prefix: "ISO ", suffix: "", grouping: false, duration: 1200 }
 ];
 
 export const products: Product[] = [

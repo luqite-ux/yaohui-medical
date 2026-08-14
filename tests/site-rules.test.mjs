@@ -26,12 +26,17 @@ assert.ok(fs.existsSync(path.join(root, "app", "robots.ts")), "site must publish
 assert.match(combined, /Home/, "navigation must explicitly include Home");
 assert.match(combined, /mobile-navigation/, "header must include a mobile navigation control");
 assert.match(combined, /logo-mark\.png/, "site chrome must use the visible customer logo asset");
+assert.match(combined, /hero-copy/, "homepage banner must isolate copy from brochure imagery");
+assert.match(combined, /rgba\(255,\s*255,\s*255,\s*0\.94\)/, "homepage banner copy layer must use the approved 94% white foundation");
 assert.doesNotMatch(combined, /漏/, "site must not contain corrupted footer text");
 assert.match(combined, /inquiry/i, "site must include inquiry entry points");
 assert.doesNotMatch(combined, /\b(price|prices|cart|checkout|payment|pay online)\b/i, "B2B site must not expose commerce language");
 assert.doesNotMatch(combined, /\b(warranty|warranties|guarantee|guaranteed)\b|质保|保修|质量保证/i, "site must not publish warranty or guarantee commitments");
 
 const dataFile = fs.readFileSync(path.join(root, "lib", "site-data.ts"), "utf8");
+for (const asset of ["catalog-plaster-bandage.png", "catalog-orthopedic-padding.png", "catalog-elastic-bandage.png"]) {
+  assert.match(dataFile, new RegExp(asset.replace(".", "\\.")), `product data must use ${asset}`);
+}
 assert.match(dataFile, /supportedLocales:\s*\["en"\]/, "English launch must keep supportedLocales data shape");
 assert.match(dataFile, /adminGroup:\s*2/, "new tenant metadata must default to admin group 2");
 

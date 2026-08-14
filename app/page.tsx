@@ -9,7 +9,7 @@ export default function HomePage() {
     <main>
       <section className="hero">
         <div className="container hero-grid">
-          <div>
+          <div className="hero-copy">
             <p className="eyebrow">Orthopedic Medical Supply Manufacturer</p>
             <h1>Yaohui Medical supplies casting bandages for global B2B buyers.</h1>
             <p className="hero-lead">

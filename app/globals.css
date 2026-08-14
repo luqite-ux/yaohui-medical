@@ -215,6 +215,29 @@ a {
   align-items: center;
 }
 
+.hero-copy {
+  position: relative;
+  z-index: 1;
+  padding: 38px 0 34px;
+}
+
+.hero-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -24px;
+  right: -110px;
+  bottom: -24px;
+  left: -10vw;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.98) 0%,
+    rgba(255, 255, 255, 0.94) 76%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+
 .eyebrow {
   color: var(--green);
   font-size: 12px;
@@ -652,6 +675,15 @@ textarea {
   .hero {
     min-height: auto;
     padding-top: 56px;
+  }
+
+  .hero-copy {
+    padding-top: 20px;
+  }
+
+  .hero-copy::before {
+    inset: -56px -14px -28px;
+    background: #ffffff;
   }
 
   .hero-panel {

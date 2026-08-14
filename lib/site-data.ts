@@ -59,7 +59,7 @@ export const products: Product[] = [
   {
     slug: "plaster-of-paris-bandage",
     category: "Medical Bandage",
-    image: "/images/products/1f5adc7b-57d2-4907-bc00-a804a03e6486.jpg",
+    image: "/images/products/catalog-plaster-bandage.png",
     name: { en: "Plaster of Paris Bandage" },
     summary: {
       en: "Fast-setting orthopedic casting bandage made from cotton gauze coated with calcined gypsum powder."
@@ -74,7 +74,7 @@ export const products: Product[] = [
   {
     slug: "orthopedic-padding",
     category: "Medical Bandage",
-    image: "/images/products/9311980e-6162-4f4f-9632-c94bd11aa7c2.jpg",
+    image: "/images/products/catalog-orthopedic-padding.png",
     name: { en: "Orthopedic Padding" },
     summary: {
       en: "Soft auxiliary padding used before orthopedic external fixation to separate skin from the cast layer."
@@ -89,7 +89,7 @@ export const products: Product[] = [
   {
     slug: "elastic-bandage",
     category: "Medical Bandage",
-    image: "/images/products/9ba57ef0-fd33-4146-ab01-ff78360fa1de.jpg",
+    image: "/images/products/catalog-elastic-bandage.png",
     name: { en: "Elastic Bandage" },
     summary: {
       en: "Elastic medical bandage for supportive wrapping, compression assistance and everyday orthopedic supply programs."

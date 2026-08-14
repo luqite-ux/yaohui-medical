@@ -29,4 +29,12 @@ const dataFile = fs.readFileSync(path.join(root, "lib", "site-data.ts"), "utf8")
 assert.match(dataFile, /supportedLocales:\s*\["en"\]/, "English launch must keep supportedLocales data shape");
 assert.match(dataFile, /adminGroup:\s*2/, "new tenant metadata must default to admin group 2");
 
+const nextConfig = fs.readFileSync(path.join(root, "next.config.mjs"), "utf8");
+assert.match(nextConfig, /source:\s*['"]\/admin['"]/, "customer site must proxy /admin to huanqiu-admin");
+assert.match(nextConfig, /source:\s*['"]\/api\/admin\/:path\*['"]/, "customer site must proxy backend admin APIs");
+
+const loginRoute = fs.readFileSync(path.join(root, "app", "api", "auth", "login", "route.ts"), "utf8");
+assert.match(loginRoute, /hq_tenant_id/, "login route must set tenant cookie for portal mode");
+assert.match(loginRoute, /NextResponse\.redirect\(new URL\(['"]\/admin['"]/, "login route must use hard document redirect to /admin");
+
 console.log("site rules passed");

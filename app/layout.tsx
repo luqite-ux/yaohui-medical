@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   },
   description: company.description,
   icons: {
-    icon: "/icon.png",
-    apple: "/icon.png"
+    icon: "/icon-v2.png",
+    apple: "/icon-v2.png"
   }
 };
 

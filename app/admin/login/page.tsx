@@ -14,7 +14,7 @@ function LoginForm() {
     <main className="min-h-screen bg-gradient-to-br from-white via-[#effbf8] to-[#dff5ef] grid place-items-center px-4 py-12">
       <section className="w-full max-w-md rounded-2xl border border-[#d9ece8] bg-white p-8 shadow-[0_24px_80px_rgba(20,43,52,0.12)]">
         <div className="mb-7 text-center">
-          <Image src="/logo.png" alt="Yaohui Medical" width={180} height={84} className="mx-auto mb-6" priority />
+          <Image src="/logo-mark.png" alt="Yaohui Medical" width={180} height={96} className="mx-auto mb-6 h-auto" priority />
           <h1 className="text-2xl font-bold text-[#142b34]">Yaohui Medical Admin</h1>
           <p className="mt-2 text-sm text-[#557076]">Sign in to manage products, articles and inquiries.</p>
         </div>

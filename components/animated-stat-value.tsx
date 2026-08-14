@@ -56,9 +56,10 @@ export function AnimatedStatValue({ stat }: { stat: AnimatedStat }) {
   }, [stat]);
 
   const display = formatAnimatedStat(current, stat.prefix, stat.suffix, stat.grouping);
+  const valueClassName = stat.end >= 100000 ? "animated-stat-value stat-value-compact" : "animated-stat-value";
 
   return (
-    <span ref={rootRef} className="animated-stat-value">
+    <span ref={rootRef} className={valueClassName}>
       <span className="sr-only">{stat.value}</span>
       <span className="stat-value-sizer" aria-hidden="true">
         {stat.value}

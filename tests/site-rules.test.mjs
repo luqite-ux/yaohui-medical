@@ -34,6 +34,8 @@ assert.match(combined, /IntersectionObserver/, "count-up motion must start from 
 assert.match(combined, /requestAnimationFrame/, "count-up motion must update on animation frames");
 assert.match(combined, /prefers-reduced-motion/, "count-up motion must respect reduced-motion preferences");
 assert.match(combined, /\.stat-card\s*>\s*span/, "stat labels must not override nested animated number sizing");
+assert.match(fs.readFileSync(path.join(root, "components", "animated-stat-value.tsx"), "utf8"), /stat-value-compact/, "six-digit statistics must use the compact value treatment");
+assert.match(combined, /\.stat-value-compact/, "compact statistics must define a bounded font size");
 assert.match(combined, /grid-template-columns:\s*repeat\(4,\s*minmax\(0,\s*1fr\)\)/, "hero stat cards must keep equal column widths");
 assert.doesNotMatch(combined, /漏/, "site must not contain corrupted footer text");
 assert.match(combined, /inquiry/i, "site must include inquiry entry points");

@@ -35,12 +35,13 @@ export async function POST(request: Request) {
     company: clean(form.get("company")),
     email: clean(form.get("email")),
     phone: clean(form.get("phone")),
-    product_interest: clean(form.get("product")),
+    subject: clean(form.get("product")) || "Website inquiry",
     message: clean(form.get("message")),
     source: clean(form.get("source")) || "website",
-    status: "new",
+    status: "unread",
     extra_data: {
       site: company.brand,
+      product_interest: clean(form.get("product")),
       submitted_at: new Date().toISOString()
     }
   };

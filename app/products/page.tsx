@@ -21,7 +21,7 @@ export default async function ProductsPage() {
         <div className="container product-grid">
           {products.map((product) => (
             <article className="product-card" key={product.slug}>
-              <Link className="product-card-link" href={`/products/${product.slug}`} aria-label={`View ${product.name.en}`}>
+              <Link className="product-card-link" href={`/products/${product.slug}`}>
               <Image src={product.image} alt={product.name.en} width={520} height={360} />
               <p className="eyebrow">{product.category}</p>
               <h3>{product.name.en}</h3>

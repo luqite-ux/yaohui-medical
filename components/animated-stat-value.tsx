@@ -58,7 +58,8 @@ export function AnimatedStatValue({ stat }: { stat: AnimatedStat }) {
   const display = formatAnimatedStat(current, stat.prefix, stat.suffix, stat.grouping);
 
   return (
-    <span ref={rootRef} className="animated-stat-value" aria-label={stat.value}>
+    <span ref={rootRef} className="animated-stat-value">
+      <span className="sr-only">{stat.value}</span>
       <span className="stat-value-sizer" aria-hidden="true">
         {stat.value}
       </span>

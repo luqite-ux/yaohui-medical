@@ -44,7 +44,7 @@ export default async function HomePage() {
             <div className="scan-line" />
             <div className="hero-card">
               <p className="eyebrow">Compliance Documentation</p>
-              <h3>ISO 13485:2016, MDR/CE declarations and export sales documents are available for purchasing review.</h3>
+              <p className="hero-card-title">ISO 13485:2016, MDR/CE declarations and export sales documents are available for purchasing review.</p>
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@ export default async function HomePage() {
           <div className="product-grid">
             {products.map((product) => (
               <article className="product-card" key={product.slug}>
-                <Link className="product-card-link" href={`/products/${product.slug}`} aria-label={`View ${product.name.en}`}>
+                <Link className="product-card-link" href={`/products/${product.slug}`}>
                 <Image src={product.image} alt={product.name.en} width={520} height={360} />
                 <p className="eyebrow">{product.category}</p>
                 <h3>{product.name.en}</h3>

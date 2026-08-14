@@ -9,7 +9,7 @@ function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      if (!["node_modules", ".next", ".git", "tests"].includes(entry.name)) walk(full);
+      if (!["node_modules", ".next", ".git", ".playwright-cli", "output", "tests"].includes(entry.name)) walk(full);
       continue;
     }
     if (/\.(tsx|ts|css|mjs|json)$/.test(entry.name)) files.push(full);
@@ -29,6 +29,7 @@ assert.match(combined, /logo-mark\.png/, "site chrome must use the visible custo
 assert.match(combined, /hero-copy/, "homepage banner must isolate copy from brochure imagery");
 assert.match(combined, /rgba\(255,\s*255,\s*255,\s*0\.94\)/, "homepage banner copy layer must use the approved 94% white foundation");
 assert.match(combined, /AnimatedStatValue/, "hero statistics must use the count-up component");
+assert.doesNotMatch(fs.readFileSync(path.join(root, "components", "animated-stat-value.tsx"), "utf8"), /className="animated-stat-value" aria-label=/, "animated statistics must not put aria-label on a generic span");
 assert.match(combined, /IntersectionObserver/, "count-up motion must start from viewport visibility");
 assert.match(combined, /requestAnimationFrame/, "count-up motion must update on animation frames");
 assert.match(combined, /prefers-reduced-motion/, "count-up motion must respect reduced-motion preferences");
@@ -62,7 +63,9 @@ assert.match(inquiryForm, /success|sent/i, "inquiry form must show a success sta
 assert.match(inquiryForm, /error|failed/i, "inquiry form must show a failure state");
 
 for (const page of ["app/page.tsx", "app/products/page.tsx"]) {
-  assert.match(fs.readFileSync(path.join(root, page), "utf8"), /product-card-link/, `${page} must make the product card content clickable`);
+  const source = fs.readFileSync(path.join(root, page), "utf8");
+  assert.match(source, /product-card-link/, `${page} must make the product card content clickable`);
+  assert.doesNotMatch(source, /product-card-link[^>]+aria-label=/, `${page} must derive the card link name from its visible content`);
 }
 
 const dataFile = fs.readFileSync(path.join(root, "lib", "site-data.ts"), "utf8");

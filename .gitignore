@@ -6,5 +6,6 @@ out
 .env.local
 *.log
 .playwright-cli/
+output/
 public/logo-v2-source.png
 public/logo-v2.png

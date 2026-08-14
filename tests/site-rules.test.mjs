@@ -21,6 +21,8 @@ walk(root);
 const combined = files.map((file) => fs.readFileSync(file, "utf8")).join("\n");
 
 assert.ok(fs.existsSync(path.join(root, "public", "favicon.ico")), "site must provide the conventional favicon.ico asset");
+assert.ok(fs.existsSync(path.join(root, "app", "sitemap.ts")), "site must publish sitemap.xml");
+assert.ok(fs.existsSync(path.join(root, "app", "robots.ts")), "site must publish robots.txt");
 assert.match(combined, /Home/, "navigation must explicitly include Home");
 assert.match(combined, /mobile-navigation/, "header must include a mobile navigation control");
 assert.match(combined, /logo-mark\.png/, "site chrome must use the visible customer logo asset");

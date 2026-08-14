@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "test": "node tests/site-rules.test.mjs && node --test tests/stat-animation.test.mjs"
   },

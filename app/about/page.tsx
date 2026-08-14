@@ -1,6 +1,8 @@
 import { PageHero, InquiryBand } from "@/components/site-shell";
 import { company } from "@/lib/site-data";
 
+export const metadata = { title: "About Us", description: "Learn about Anji Yaohui Medical Products Co., Ltd., its bandage manufacturing focus and production capacity.", alternates: { canonical: "/about" } };
+
 export default function AboutPage() {
   return (
     <main>
@@ -10,7 +12,7 @@ export default function AboutPage() {
           <div className="page-card">
             <h2>{company.companyName}</h2>
             <p>
-              Located in Tianzi Lake Industrial Park, Anji County, Yaohui Medical benefits from convenient access to Hangzhou, Shanghai and Ningbo. The company focuses on plaster of paris bandages, orthopedic padding and elastic bandages.
+              Located in Tianzi Lake Industrial Park, Anji County, Yaohui Medical is 70 km from Hangzhou, 200 km from Shanghai and 250 km from Ningbo. The company manufactures Plaster of Paris bandages, orthopedic padding and elastic bandages.
             </p>
             <p>
               The factory covers more than 4,000 square meters and includes workshops for plaster bandage coating, plaster bandage packing and orthopedic padding packing. Export markets include Southeast Asia, Europe, the Middle East and Africa.

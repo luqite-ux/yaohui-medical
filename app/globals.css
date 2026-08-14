@@ -466,6 +466,11 @@ p {
   overflow: hidden;
 }
 
+.product-card-link {
+  display: block;
+  height: 100%;
+}
+
 .product-card img,
 .media-card img {
   width: 100%;
@@ -565,6 +570,19 @@ textarea {
 
 textarea {
   resize: vertical;
+}
+
+.form-status {
+  margin: 0;
+  font-weight: 700;
+}
+
+.form-status-success { color: #0b6b4f; }
+.form-status-error { color: #a4262c; }
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
 }
 
 .site-footer {

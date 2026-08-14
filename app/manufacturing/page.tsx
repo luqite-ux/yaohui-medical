@@ -3,6 +3,8 @@ import { Factory } from "lucide-react";
 import { InquiryBand, PageHero } from "@/components/site-shell";
 import { factoryHighlights } from "@/lib/site-data";
 
+export const metadata = { title: "Manufacturing", description: "Explore Yaohui Medical's coating, cutting and packing facilities for medical bandage production.", alternates: { canonical: "/manufacturing" } };
+
 export default function ManufacturingPage() {
   return (
     <main>
@@ -12,8 +14,8 @@ export default function ManufacturingPage() {
           {["/images/brochure/2.jpg", "/images/brochure/3.jpg", "/images/brochure/4.jpg"].map((src, index) => (
             <article className="media-card" key={src}>
               <Image src={src} alt={`Yaohui Medical manufacturing view ${index + 1}`} width={560} height={360} />
-              <h3>Factory View {index + 1}</h3>
-              <p>Real production and packing scenes from Yaohui Medical's medical supply manufacturing environment.</p>
+              <h3>{["Bandage Production", "Cutting Equipment", "Packing Area"][index]}</h3>
+              <p>Production and packing facilities at Yaohui Medical in Anji, Zhejiang.</p>
             </article>
           ))}
         </div>
@@ -26,7 +28,7 @@ export default function ManufacturingPage() {
                 <Factory size={22} />
               </div>
               <h3>{item}</h3>
-              <p>Configured to support stable production, packing and shipment preparation for recurring medical supply orders.</p>
+              <p>Used in the production, packing or shipment preparation of Yaohui Medical bandage products.</p>
             </article>
           ))}
         </div>

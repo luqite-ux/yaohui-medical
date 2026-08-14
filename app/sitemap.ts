@@ -1,10 +1,13 @@
 import type { MetadataRoute } from "next";
 import { products } from "@/lib/site-data";
+import { getPublishedArticles } from "@/lib/articles-db";
 
 const siteUrl = "https://yaohuimedicalbandage.com";
-const publicRoutes = ["", "/products", "/about", "/manufacturing", "/quality", "/oem-odm", "/faq", "/contact"];
+const publicRoutes = ["", "/products", "/about", "/manufacturing", "/quality", "/oem-odm", "/faq", "/news", "/contact"];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export const dynamic = "force-dynamic";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date("2026-08-14");
   const pages = publicRoutes.map((route) => ({
     url: `${siteUrl}${route}`,
@@ -20,5 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8
   }));
 
-  return [...pages, ...productPages];
+  const articles = await getPublishedArticles();
+  const articlePages = articles.map((article) => ({ url: `${siteUrl}/news/${article.slug}`, lastModified: new Date(article.updatedAt), changeFrequency: "monthly" as const, priority: 0.7 }));
+  return [...pages, ...productPages, ...articlePages];
 }

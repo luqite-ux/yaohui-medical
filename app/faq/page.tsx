@@ -2,6 +2,8 @@ import { Sparkles } from "lucide-react";
 import { InquiryBand, PageHero } from "@/components/site-shell";
 import { faqs } from "@/lib/site-data";
 
+export const metadata = { title: "FAQ", description: "Answers about specifications, samples, MOQ, production lead times, OEM/ODM and inspection for Yaohui Medical bandages.", alternates: { canonical: "/faq" } };
+
 export default function FaqPage() {
   return (
     <main>

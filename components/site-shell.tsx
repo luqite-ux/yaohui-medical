@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Mail, MapPin, Menu, Phone } from "lucide-react";
 import { company, navigation, products } from "@/lib/site-data";
+import { InquiryForm } from "@/components/inquiry-form";
+
+export { InquiryForm } from "@/components/inquiry-form";
 
 export function SiteHeader() {
   return (
@@ -82,50 +85,6 @@ export function PageHero({ eyebrow, title, intro }: { eyebrow: string; title: st
         <p className="hero-lead">{intro}</p>
       </div>
     </section>
-  );
-}
-
-export function InquiryForm({ product }: { product?: string }) {
-  return (
-    <form className="inquiry-form" action="/api/inquiry" method="post">
-      <input type="hidden" name="source" value="website" />
-      <div className="form-grid">
-        <label>
-          Name
-          <input name="name" required placeholder="Your name" />
-        </label>
-        <label>
-          Company
-          <input name="company" required placeholder="Company name" />
-        </label>
-        <label>
-          Email
-          <input name="email" type="email" required placeholder="name@company.com" />
-        </label>
-        <label>
-          Phone / WhatsApp
-          <input name="phone" placeholder="Country code + number" />
-        </label>
-      </div>
-      <label>
-        Product Interest
-        <select name="product" defaultValue={product || ""}>
-          <option value="">Select a product</option>
-          {products.map((item) => (
-            <option key={item.slug} value={item.name.en}>
-              {item.name.en}
-            </option>
-          ))}
-        </select>
-      </label>
-      <label>
-        Inquiry Details
-        <textarea name="message" required rows={5} placeholder="Tell us specifications, quantity, packaging and destination market." />
-      </label>
-      <button className="primary-button" type="submit">
-        Submit Inquiry <ArrowRight size={18} />
-      </button>
-    </form>
   );
 }
 

@@ -3,18 +3,22 @@ import Link from "next/link";
 import { ArrowRight, BadgeCheck, Factory, Globe2, PackageCheck, Sparkles } from "lucide-react";
 import { InquiryBand } from "@/components/site-shell";
 import { AnimatedStatValue } from "@/components/animated-stat-value";
-import { company, factoryHighlights, faqs, heroStats, products } from "@/lib/site-data";
+import { company, factoryHighlights, faqs, heroStats } from "@/lib/site-data";
+import { listProducts } from "@/lib/products-db";
 
-export default function HomePage() {
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const products = await listProducts();
   return (
     <main>
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-copy">
             <p className="eyebrow">Orthopedic Medical Supply Manufacturer</p>
-            <h1>Yaohui Medical supplies casting bandages for global B2B buyers.</h1>
+            <h1>Orthopedic bandages for global medical supply buyers.</h1>
             <p className="hero-lead">
-              Manufacturer of plaster of paris bandages, orthopedic padding and elastic bandages for distributors, hospitals and medical supply partners.
+              Yaohui Medical manufactures Plaster of Paris bandages, orthopedic padding and elastic bandages for distributors, hospitals and medical supply partners.
             </p>
             <div className="hero-actions">
               <Link className="primary-button" href="/contact">
@@ -39,8 +43,8 @@ export default function HomePage() {
             <div className="pulse-grid" />
             <div className="scan-line" />
             <div className="hero-card">
-              <p className="eyebrow">Bright, certified, export-ready</p>
-              <h3>ISO 13485:2016 and CE/MDR documentation support for medical distribution projects.</h3>
+              <p className="eyebrow">Compliance Documentation</p>
+              <h3>ISO 13485:2016, MDR/CE declarations and export sales documents are available for purchasing review.</h3>
             </div>
           </div>
         </div>
@@ -55,12 +59,14 @@ export default function HomePage() {
           <div className="product-grid">
             {products.map((product) => (
               <article className="product-card" key={product.slug}>
+                <Link className="product-card-link" href={`/products/${product.slug}`} aria-label={`View ${product.name.en}`}>
                 <Image src={product.image} alt={product.name.en} width={520} height={360} />
                 <p className="eyebrow">{product.category}</p>
                 <h3>{product.name.en}</h3>
                 <p>{product.summary.en}</p>
-                <Link className="link-arrow" href={`/products/${product.slug}`}>
+                <span className="link-arrow">
                   Product details <ArrowRight size={16} />
+                </span>
                 </Link>
               </article>
             ))}

@@ -26,7 +26,7 @@ export const company = {
   address: "Tianzi Lake Industrial Park, Anji County, Zhejiang, China",
   tagline: "Orthopedic bandage manufacturing for global medical supply partners",
   description:
-    "Anji Yaohui Medical Products Co., Ltd. manufactures plaster of paris bandages, orthopedic padding and elastic bandages for distributors, hospitals and medical supply partners.",
+    "Anji Yaohui Medical Products Co., Ltd. manufactures Plaster of Paris bandages, orthopedic padding and elastic bandages for distributors, hospitals and medical supply partners.",
   established: "2010",
   factoryArea: "4,000+ m²",
   monthlyCapacity: "600,000 rolls",
@@ -45,6 +45,7 @@ export const navigation = [
   { label: "Quality", href: "/quality" },
   { label: "OEM/ODM", href: "/oem-odm" },
   { label: "FAQ", href: "/faq" },
+  { label: "News", href: "/news" },
   { label: "Contact", href: "/contact" }
 ];
 
@@ -65,11 +66,11 @@ export const products: Product[] = [
       en: "Fast-setting orthopedic casting bandage made from cotton gauze coated with calcined gypsum powder."
     },
     description: {
-      en: "Yaohui plaster of paris bandage is produced by coating cotton gauze with calcined gypsum powder and drying it through controlled production equipment. After soaking in water, it hardens quickly and supports strong molding performance for orthopedic fixation, molds, prosthetic support work and protective orthopedic applications."
+      en: "Yaohui Plaster of Paris bandages are made by coating cotton gauze with calcined gypsum powder and drying the coated gauze in an oven. After immersion in water, the bandage sets quickly and can be molded for orthopedic fixation, mold making, prosthetic work and protective supports."
     },
     specs: ["Widths: 5cm, 7.5cm, 10cm, 12.5cm, 15cm, 20cm", "Lengths: 2.7m, 3m, 3.6m, 4m, 4.5m", "Custom specifications available", "Single-use medical supply"],
-    applications: ["Orthopedic department fixation", "External immobilization support", "Mold and prosthetic auxiliary work", "Protective support for clinical use"],
-    highlights: ["Fast setting after water immersion", "Strong shaping ability", "Stable batch production", "Available for OEM packing"]
+    applications: ["Orthopedic fixation", "External immobilization", "Mold and prosthetic work", "Protective support fabrication"],
+    highlights: ["Sets quickly after water immersion", "Easy to mold", "Cotton gauze base", "Custom specifications available"]
   },
   {
     slug: "orthopedic-padding",
@@ -77,14 +78,14 @@ export const products: Product[] = [
     image: "/images/products/catalog-orthopedic-padding.png",
     name: { en: "Orthopedic Padding" },
     summary: {
-      en: "Soft auxiliary padding used before orthopedic external fixation to separate skin from the cast layer."
+      en: "Soft undercast padding applied before external orthopedic fixation to form a cushioning layer beneath the cast."
     },
     description: {
-      en: "Orthopedic padding is designed as an auxiliary dressing before external orthopedic fixation. It is commonly made with cotton, non-woven fabric or viscose cotton, providing a soft isolation layer before plaster bandage wrapping while helping disperse pressure during clinical use."
+      en: "Orthopedic padding is an auxiliary dressing applied before external orthopedic fixation. Available in cotton, nonwoven or viscose cotton, it forms a soft layer beneath a Plaster of Paris bandage and helps absorb heat from the setting reaction and distribute external pressure."
     },
     specs: ["Cotton, non-woven or viscose cotton options", "Soft roll format", "Custom width and packing support", "Single-use auxiliary dressing"],
     applications: ["Padding before plaster bandage application", "Orthopedic external fixation", "Hospital orthopedic departments", "Medical supply distribution"],
-    highlights: ["Soft contact layer", "Breathable and absorbent feel", "Works with plaster bandage systems", "Custom size support"]
+    highlights: ["Soft cushioning layer", "Moisture-absorbing and breathable materials", "For use beneath cast bandages", "Custom specifications available"]
   },
   {
     slug: "elastic-bandage",
@@ -92,14 +93,14 @@ export const products: Product[] = [
     image: "/images/products/catalog-elastic-bandage.png",
     name: { en: "Elastic Bandage" },
     summary: {
-      en: "Elastic medical bandage for supportive wrapping, compression assistance and everyday orthopedic supply programs."
+      en: "Elastic bandage supplied for medical wrapping applications and distributor purchasing programs."
     },
     description: {
-      en: "Yaohui elastic bandages are supplied for medical distribution and orthopedic support use. Specifications, packaging and private-label requirements can be reviewed for long-term B2B purchasing programs."
+      en: "Yaohui Medical manufactures elastic bandages for medical supply channels. Buyers can submit required specifications and packing details for review."
     },
-    specs: ["Multiple widths available by request", "Roll packing", "OEM label and carton options", "Samples can be arranged"],
-    applications: ["Supportive wrapping", "Medical distribution channels", "Hospital and clinic supplies", "First-aid product programs"],
-    highlights: ["Comfortable wrapping feel", "Flexible OEM packing", "Stable repeat supply", "Inspection records available on request"]
+    specs: ["Specifications confirmed by inquiry", "Roll format", "Packing requirements reviewed by project", "Samples available on request"],
+    applications: ["Medical wrapping", "Medical supply distribution", "Hospital supply procurement", "Orthopedic supply programs"],
+    highlights: ["Elastic roll format", "Single-use medical supply", "Custom requirements reviewed by inquiry", "Sample requests accepted"]
   }
 ];
 

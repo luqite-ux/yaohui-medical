@@ -2,6 +2,8 @@ import { Award, ClipboardCheck, FileCheck2 } from "lucide-react";
 import { InquiryBand, PageHero } from "@/components/site-shell";
 import { company } from "@/lib/site-data";
 
+export const metadata = { title: "Quality Documentation", description: "Review the certification, technical file and inspection documentation available from Yaohui Medical.", alternates: { canonical: "/quality" } };
+
 export default function QualityPage() {
   return (
     <main>

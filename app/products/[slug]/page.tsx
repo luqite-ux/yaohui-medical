@@ -1,29 +1,32 @@
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { InquiryBand, PageHero } from "@/components/site-shell";
-import { getProduct, products } from "@/lib/site-data";
+import { getProductBySlug } from "@/lib/products-db";
 
-export function generateStaticParams() {
-  return products.map((product) => ({ slug: product.slug }));
-}
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProductBySlug(slug);
   if (!product) return {};
   return {
     title: product.name.en,
-    description: product.summary.en
+    description: product.summary.en,
+    alternates: { canonical: `/products/${slug}` },
+    openGraph: { type: "website", title: product.name.en, description: product.summary.en, url: `/products/${slug}`, images: [{ url: product.image, alt: product.name.en }] }
   };
 }
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const product = getProduct(slug);
+  const product = await getProductBySlug(slug);
   if (!product) notFound();
+  const productSchema = { "@context": "https://schema.org", "@type": "Product", name: product.name.en, description: product.summary.en, image: [product.image], brand: { "@type": "Brand", name: "Yaohui Medical" } };
 
   return (
     <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <PageHero eyebrow={product.category} title={product.name.en} intro={product.summary.en} />
       <section className="section section-white">
         <div className="container page-grid">

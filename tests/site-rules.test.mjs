@@ -38,6 +38,32 @@ assert.doesNotMatch(combined, /漏/, "site must not contain corrupted footer tex
 assert.match(combined, /inquiry/i, "site must include inquiry entry points");
 assert.doesNotMatch(combined, /\b(price|prices|cart|checkout|payment|pay online)\b/i, "B2B site must not expose commerce language");
 assert.doesNotMatch(combined, /\b(warranty|warranties|guarantee|guaranteed)\b|质保|保修|质量保证/i, "site must not publish warranty or guarantee commitments");
+assert.doesNotMatch(combined, /plaster of paris/, "product terminology must consistently capitalize Plaster of Paris");
+assert.doesNotMatch(combined, /Bright, certified, export-ready/i, "site must avoid unsupported promotional certification language");
+assert.doesNotMatch(combined, /Comfortable wrapping feel|Stable repeat supply|First-aid product programs|Inspection records available on request/i, "elastic bandage copy must not add unsupported claims");
+
+for (const route of ["products", "about", "manufacturing", "quality", "oem-odm", "faq", "contact", "news"]) {
+  const page = path.join(root, "app", route, "page.tsx");
+  assert.ok(fs.existsSync(page), `${route} must have an independent page`);
+  assert.match(fs.readFileSync(page, "utf8"), /metadata|generateMetadata/, `${route} must define page-specific metadata`);
+}
+
+assert.ok(fs.existsSync(path.join(root, "app", "news", "[slug]", "page.tsx")), "site must provide a news detail route");
+assert.ok(fs.existsSync(path.join(root, "lib", "articles-db.ts")), "news must have a Supabase-backed data layer");
+assert.ok(fs.existsSync(path.join(root, "lib", "products-db.ts")), "products must have a Supabase-backed data layer");
+for (const page of ["app/page.tsx", "app/products/page.tsx", "app/products/[slug]/page.tsx"]) {
+  assert.match(fs.readFileSync(path.join(root, page), "utf8"), /products-db/, `${page} must read products through the server data layer`);
+  assert.match(fs.readFileSync(path.join(root, page), "utf8"), /force-dynamic/, `${page} must not freeze Supabase product data at build time`);
+}
+assert.ok(fs.existsSync(path.join(root, "components", "inquiry-form.tsx")), "inquiry form must provide client-side submission states");
+const inquiryForm = fs.readFileSync(path.join(root, "components", "inquiry-form.tsx"), "utf8");
+assert.match(inquiryForm, /Submitting/, "inquiry form must show a pending state");
+assert.match(inquiryForm, /success|sent/i, "inquiry form must show a success state");
+assert.match(inquiryForm, /error|failed/i, "inquiry form must show a failure state");
+
+for (const page of ["app/page.tsx", "app/products/page.tsx"]) {
+  assert.match(fs.readFileSync(path.join(root, page), "utf8"), /product-card-link/, `${page} must make the product card content clickable`);
+}
 
 const dataFile = fs.readFileSync(path.join(root, "lib", "site-data.ts"), "utf8");
 for (const asset of ["catalog-plaster-bandage.png", "catalog-orthopedic-padding.png", "catalog-elastic-bandage.png"]) {

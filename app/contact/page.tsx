@@ -2,6 +2,8 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { InquiryForm, PageHero } from "@/components/site-shell";
 import { company } from "@/lib/site-data";
 
+export const metadata = { title: "Contact", description: "Contact Yaohui Medical about Plaster of Paris bandages, orthopedic padding, elastic bandages and OEM/ODM requirements.", alternates: { canonical: "/contact" } };
+
 export default function ContactPage() {
   return (
     <main>

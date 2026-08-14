@@ -55,5 +55,5 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, message: "Inquiry save failed.", detail }, { status: 502 });
   }
 
-  return NextResponse.redirect(new URL("/contact?inquiry=sent", request.url), 303);
+  return NextResponse.json({ ok: true, message: "Inquiry sent successfully." });
 }

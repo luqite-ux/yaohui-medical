@@ -2,6 +2,8 @@ import { Package, PenTool, Ruler } from "lucide-react";
 import { InquiryBand, PageHero } from "@/components/site-shell";
 import { company } from "@/lib/site-data";
 
+export const metadata = { title: "OEM and ODM", description: "Submit custom bandage specifications, materials and packing requirements to Yaohui Medical for project review.", alternates: { canonical: "/oem-odm" } };
+
 export default function OemPage() {
   return (
     <main>

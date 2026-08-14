@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { company } from "@/lib/site-data";
 
 const requiredFields = ["name", "company", "email", "message"];
 
@@ -37,13 +36,7 @@ export async function POST(request: Request) {
     phone: clean(form.get("phone")),
     subject: clean(form.get("product")) || "Website inquiry",
     message: clean(form.get("message")),
-    source: clean(form.get("source")) || "website",
-    status: "unread",
-    extra_data: {
-      site: company.brand,
-      product_interest: clean(form.get("product")),
-      submitted_at: new Date().toISOString()
-    }
+    status: "unread"
   };
 
   const response = await fetch(`${supabaseUrl.replace(/\/$/, "")}/rest/v1/inquiries`, {

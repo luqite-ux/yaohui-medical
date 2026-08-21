@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
+import { ProductGallery } from "@/components/product-gallery";
 import { InquiryBand, PageHero } from "@/components/site-shell";
 import { getProductBySlug } from "@/lib/products-db";
 
@@ -22,7 +22,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const { slug } = await params;
   const product = await getProductBySlug(slug);
   if (!product) notFound();
-  const productSchema = { "@context": "https://schema.org", "@type": "Product", name: product.name.en, description: product.summary.en, image: [product.image], brand: { "@type": "Brand", name: "Yaohui Medical" } };
+  const productSchema = { "@context": "https://schema.org", "@type": "Product", name: product.name.en, description: product.summary.en, image: product.images, brand: { "@type": "Brand", name: "Yaohui Medical" } };
 
   return (
     <main>
@@ -31,7 +31,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
       <section className="section section-white">
         <div className="container page-grid">
           <div className="page-card">
-            <Image src={product.image} alt={product.name.en} width={760} height={520} />
+            <ProductGallery images={product.images} productName={product.name.en} />
             <h2>Product Overview</h2>
             <p>{product.description.en}</p>
           </div>

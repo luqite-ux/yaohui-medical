@@ -41,10 +41,11 @@ def render(source_name: str, box: tuple[int, int, int, int], destination: Path) 
     with Image.open(SOURCE / source_name) as original:
         crop = original.convert("RGB").crop(box)
         crop = ImageOps.fit(crop, (1200, 900), method=Image.Resampling.LANCZOS)
-        crop = ImageEnhance.Contrast(crop).enhance(1.04)
-        crop = ImageEnhance.Sharpness(crop).enhance(1.08)
-        crop = crop.filter(ImageFilter.UnsharpMask(radius=1.2, percent=80, threshold=3))
-        crop.save(destination, "WEBP", quality=88, method=6)
+        crop = ImageEnhance.Brightness(crop).enhance(1.09)
+        crop = ImageEnhance.Contrast(crop).enhance(1.035)
+        crop = ImageEnhance.Color(crop).enhance(0.98)
+        crop = crop.filter(ImageFilter.UnsharpMask(radius=1.1, percent=70, threshold=4))
+        crop.save(destination, "WEBP", quality=92, method=6)
 
 
 def main() -> None:

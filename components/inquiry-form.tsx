@@ -3,10 +3,12 @@
 import { FormEvent, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import { products } from "@/lib/site-data";
+import { InquiryCaptchaField } from "@/components/inquiry-captcha-field";
 
 export function InquiryForm({ product }: { product?: string }) {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const [captchaRefreshKey, setCaptchaRefreshKey] = useState(0);
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -24,6 +26,8 @@ export function InquiryForm({ product }: { product?: string }) {
     } catch (error) {
       setStatus("error");
       setMessage(error instanceof Error ? error.message : "We could not send your inquiry. Please try again or email us directly.");
+    } finally {
+      setCaptchaRefreshKey((key) => key + 1);
     }
   }
 
@@ -47,6 +51,7 @@ export function InquiryForm({ product }: { product?: string }) {
         Inquiry Details
         <textarea name="message" required rows={5} placeholder="Tell us the specifications, quantity, packing requirements and destination market." />
       </label>
+      <InquiryCaptchaField refreshKey={captchaRefreshKey} />
       <button className="primary-button" disabled={status === "submitting"} type="submit">
         {status === "submitting" ? "Submitting..." : "Submit Inquiry"} <ArrowRight size={18} />
       </button>

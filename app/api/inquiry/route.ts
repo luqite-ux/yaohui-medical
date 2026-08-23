@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { createSupabaseCaptchaContextFromEnv, verifyCaptchaSubmission } from "@/lib/inquiry-captcha";
 
 const requiredFields = ["name", "company", "email", "message"];
 
@@ -8,6 +9,30 @@ function clean(value: FormDataEntryValue | null) {
 
 export async function POST(request: Request) {
   const form = await request.formData();
+  const secret = process.env.CAPTCHA_SECRET?.trim();
+  if (!secret) {
+    return NextResponse.json({ ok: false, message: "Inquiry service is temporarily unavailable." }, { status: 503 });
+  }
+
+  try {
+    const { store, tenantId, siteScope } = createSupabaseCaptchaContextFromEnv();
+    const captcha = await verifyCaptchaSubmission({
+      secret,
+      store,
+      tenantId,
+      siteScope,
+      scope: clean(form.get("captchaScope")),
+      token: clean(form.get("captchaToken")),
+      answer: clean(form.get("captchaAnswer")),
+    });
+    if (!captcha.ok) {
+      return NextResponse.json({ ok: false, message: "Invalid or expired CAPTCHA. Please refresh and try again." }, { status: 400 });
+    }
+  } catch (error) {
+    console.error("[inquiry] CAPTCHA verification failed", error instanceof Error ? error.message : error);
+    return NextResponse.json({ ok: false, message: "Inquiry service is temporarily unavailable." }, { status: 503 });
+  }
+
   const missing = requiredFields.filter((key) => !clean(form.get(key)));
 
   if (missing.length > 0) {

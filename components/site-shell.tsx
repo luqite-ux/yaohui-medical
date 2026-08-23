@@ -42,11 +42,14 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const legalName = "Anji Yaohui Medical Products Co., Ltd.".replace(/[.\s]+$/, "");
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
         <div>
-          <Image className="footer-logo" src="/logo-mark.png" alt="Yaohui Medical logo" width={190} height={102} />
+          <Link href="/" aria-label="Yaohui Medical home">
+            <Image className="footer-logo" src="/logo-mark.png" alt="Yaohui Medical logo" width={228} height={122} style={{ objectFit: "contain", maxWidth: "100%", height: "auto" }} />
+          </Link>
           <h3>{company.companyName}</h3>
           <p>{company.description}</p>
         </div>
@@ -71,7 +74,7 @@ export function SiteFooter() {
           </p>
         </div>
       </div>
-      <div className="footer-bottom">&copy; 2026 {company.companyName}. B2B medical supply inquiry website.</div>
+      <div className="footer-bottom">© {new Date().getFullYear()} {legalName}. All rights reserved.</div>
     </footer>
   );
 }

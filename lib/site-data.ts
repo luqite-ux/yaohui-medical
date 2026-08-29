@@ -61,8 +61,13 @@ export const products: Product[] = [
   {
     slug: "plaster-of-paris-bandage",
     category: "Medical Bandage",
-    image: "/images/products/catalog-plaster-bandage.png",
-    images: ["/images/products/catalog-plaster-bandage.png"],
+    image: "/images/products/customer-update-2026-08/plaster-of-paris-bandage/01-customer-confirmed-main.jpg",
+    images: [
+      "/images/products/customer-update-2026-08/plaster-of-paris-bandage/01-customer-confirmed-main.jpg",
+      "/images/products/customer-update-2026-08/plaster-of-paris-bandage/02-supplemental.jpg",
+      "/images/products/customer-update-2026-08/plaster-of-paris-bandage/03-supplemental.jpg",
+      "/images/products/customer-update-2026-08/plaster-of-paris-bandage/04-supplemental.jpg"
+    ],
     name: { en: "Plaster of Paris Bandage" },
     summary: {
       en: "Fast-setting orthopedic casting bandage made from cotton gauze coated with calcined gypsum powder."
@@ -77,8 +82,14 @@ export const products: Product[] = [
   {
     slug: "orthopedic-padding",
     category: "Medical Bandage",
-    image: "/images/products/catalog-orthopedic-padding.png",
-    images: ["/images/products/catalog-orthopedic-padding.png"],
+    image: "/images/products/customer-update-2026-08/orthopedic-padding/01-customer-supplied.jpg",
+    images: [
+      "/images/products/customer-update-2026-08/orthopedic-padding/01-customer-supplied.jpg",
+      "/images/products/customer-update-2026-08/orthopedic-padding/02-customer-supplied.jpg",
+      "/images/products/customer-update-2026-08/orthopedic-padding/03-customer-supplied.jpg",
+      "/images/products/customer-update-2026-08/orthopedic-padding/04-customer-supplied.jpg",
+      "/images/products/customer-update-2026-08/orthopedic-padding/05-customer-supplied.jpg"
+    ],
     name: { en: "Orthopedic Padding" },
     summary: {
       en: "Soft undercast padding applied before external orthopedic fixation to form a cushioning layer beneath the cast."
@@ -93,8 +104,14 @@ export const products: Product[] = [
   {
     slug: "elastic-bandage",
     category: "Medical Bandage",
-    image: "/images/products/catalog-elastic-bandage.png",
-    images: ["/images/products/catalog-elastic-bandage.png"],
+    image: "/images/products/gallery/elastic-bandage/03-blue-line.webp",
+    images: [
+      "/images/products/gallery/elastic-bandage/03-blue-line.webp",
+      "/images/products/gallery/elastic-bandage/01-unbleached.webp",
+      "/images/products/gallery/elastic-bandage/02-red-line.webp",
+      "/images/products/gallery/elastic-bandage/04-skin-colour.webp",
+      "/images/products/gallery/elastic-bandage/05-bleached.webp"
+    ],
     name: { en: "Elastic Bandage" },
     summary: {
       en: "Elastic bandage supplied for medical wrapping applications and distributor purchasing programs."

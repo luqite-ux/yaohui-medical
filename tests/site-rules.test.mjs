@@ -71,9 +71,16 @@ for (const page of ["app/page.tsx", "app/products/page.tsx"]) {
 }
 
 const dataFile = fs.readFileSync(path.join(root, "lib", "site-data.ts"), "utf8");
-for (const asset of ["catalog-plaster-bandage.png", "catalog-orthopedic-padding.png", "catalog-elastic-bandage.png"]) {
-  assert.match(dataFile, new RegExp(asset.replace(".", "\\.")), `product data must use ${asset}`);
+const customerProductAssets = [
+  "customer-update-2026-08/plaster-of-paris-bandage/01-customer-confirmed-main.jpg",
+  "customer-update-2026-08/orthopedic-padding/01-customer-supplied.jpg",
+  "gallery/elastic-bandage/03-blue-line.webp"
+];
+for (const asset of customerProductAssets) {
+  assert.match(dataFile, new RegExp(asset.replaceAll(".", "\\.")), `product data must use ${asset}`);
+  assert.ok(fs.existsSync(path.join(root, "public", "images", "products", asset)), `${asset} must exist`);
 }
+assert.doesNotMatch(dataFile, /catalog-(plaster-bandage|orthopedic-padding|elastic-bandage)\.png/, "product data must not retain the rejected catalog cover images");
 assert.match(dataFile, /supportedLocales:\s*\["en"\]/, "English launch must keep supportedLocales data shape");
 assert.match(dataFile, /adminGroup:\s*2/, "new tenant metadata must default to admin group 2");
 

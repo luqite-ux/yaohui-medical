@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import crypto from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -80,6 +81,21 @@ for (const asset of customerProductAssets) {
   assert.match(dataFile, new RegExp(asset.replaceAll(".", "\\.")), `product data must use ${asset}`);
   assert.ok(fs.existsSync(path.join(root, "public", "images", "products", asset)), `${asset} must exist`);
 }
+const explicitlyNamedReplacementAssets = [
+  "customer-update-2026-08/plaster-of-paris-bandage/19db415b-cce0-4bf5-85d0-d3397644cc5b.png",
+  "customer-update-2026-08/plaster-of-paris-bandage/6b5f4de2-b4a6-47ea-bbda-a2ca97e62ede.jpg",
+  "customer-update-2026-08/plaster-of-paris-bandage/8bf1feb9-1d6b-4fd2-aaff-33d21e8f5f0c.jpg",
+  "customer-update-2026-08/plaster-of-paris-bandage/f31be59d-657e-4517-b6a7-ccbae94707ff.jpg",
+  "customer-update-2026-08/plaster-of-paris-bandage/fec5dad2-4774-428c-bbd0-94474761a717.jpg",
+  "customer-update-2026-08/orthopedic-padding/f85720dc-c8ea-4d8e-947c-754633fbb3dc.png",
+  "customer-update-2026-08/elastic-bandage/bb5e5696-b7eb-48ec-a693-509f39432dcd.png"
+];
+for (const asset of explicitlyNamedReplacementAssets) {
+  assert.match(dataFile, new RegExp(asset.replaceAll(".", "\\.")), `product data must include explicitly named replacement ${asset}`);
+  assert.ok(fs.existsSync(path.join(root, "public", "images", "products", asset)), `${asset} must exist`);
+}
+const confirmedMain = fs.readFileSync(path.join(root, "public", "images", "products", "customer-update-2026-08", "plaster-of-paris-bandage", "01-customer-confirmed-main.jpg"));
+assert.equal(crypto.createHash("sha256").update(confirmedMain).digest("hex"), "4e397d60c16f4ca36a51f80e52d9981750e5b46b36820d19d5d1de23446e8f20", "Plaster of Paris cover must remain the customer-confirmed replacement image");
 assert.doesNotMatch(dataFile, /catalog-(plaster-bandage|orthopedic-padding|elastic-bandage)\.png/, "product data must not retain the rejected catalog cover images");
 assert.match(dataFile, /supportedLocales:\s*\["en"\]/, "English launch must keep supportedLocales data shape");
 assert.match(dataFile, /adminGroup:\s*2/, "new tenant metadata must default to admin group 2");

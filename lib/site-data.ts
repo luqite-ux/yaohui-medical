@@ -64,6 +64,11 @@ export const products: Product[] = [
     image: "/images/products/customer-update-2026-08/plaster-of-paris-bandage/01-customer-confirmed-main.jpg",
     images: [
       "/images/products/customer-update-2026-08/plaster-of-paris-bandage/01-customer-confirmed-main.jpg",
+      "/images/products/customer-update-2026-08/plaster-of-paris-bandage/19db415b-cce0-4bf5-85d0-d3397644cc5b.png",
+      "/images/products/customer-update-2026-08/plaster-of-paris-bandage/6b5f4de2-b4a6-47ea-bbda-a2ca97e62ede.jpg",
+      "/images/products/customer-update-2026-08/plaster-of-paris-bandage/8bf1feb9-1d6b-4fd2-aaff-33d21e8f5f0c.jpg",
+      "/images/products/customer-update-2026-08/plaster-of-paris-bandage/f31be59d-657e-4517-b6a7-ccbae94707ff.jpg",
+      "/images/products/customer-update-2026-08/plaster-of-paris-bandage/fec5dad2-4774-428c-bbd0-94474761a717.jpg",
       "/images/products/customer-update-2026-08/plaster-of-paris-bandage/02-supplemental.jpg",
       "/images/products/customer-update-2026-08/plaster-of-paris-bandage/03-supplemental.jpg",
       "/images/products/customer-update-2026-08/plaster-of-paris-bandage/04-supplemental.jpg"
@@ -85,6 +90,7 @@ export const products: Product[] = [
     image: "/images/products/customer-update-2026-08/orthopedic-padding/01-customer-supplied.jpg",
     images: [
       "/images/products/customer-update-2026-08/orthopedic-padding/01-customer-supplied.jpg",
+      "/images/products/customer-update-2026-08/orthopedic-padding/f85720dc-c8ea-4d8e-947c-754633fbb3dc.png",
       "/images/products/customer-update-2026-08/orthopedic-padding/02-customer-supplied.jpg",
       "/images/products/customer-update-2026-08/orthopedic-padding/03-customer-supplied.jpg",
       "/images/products/customer-update-2026-08/orthopedic-padding/04-customer-supplied.jpg",
@@ -107,6 +113,7 @@ export const products: Product[] = [
     image: "/images/products/gallery/elastic-bandage/03-blue-line.webp",
     images: [
       "/images/products/gallery/elastic-bandage/03-blue-line.webp",
+      "/images/products/customer-update-2026-08/elastic-bandage/bb5e5696-b7eb-48ec-a693-509f39432dcd.png",
       "/images/products/gallery/elastic-bandage/01-unbleached.webp",
       "/images/products/gallery/elastic-bandage/02-red-line.webp",
       "/images/products/gallery/elastic-bandage/04-skin-colour.webp",

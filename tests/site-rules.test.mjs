@@ -97,6 +97,12 @@ for (const asset of explicitlyNamedReplacementAssets) {
 const confirmedMain = fs.readFileSync(path.join(root, "public", "images", "products", "customer-update-2026-08", "plaster-of-paris-bandage", "01-customer-confirmed-main.jpg"));
 assert.equal(crypto.createHash("sha256").update(confirmedMain).digest("hex"), "4e397d60c16f4ca36a51f80e52d9981750e5b46b36820d19d5d1de23446e8f20", "Plaster of Paris cover must remain the customer-confirmed replacement image");
 assert.doesNotMatch(dataFile, /catalog-(plaster-bandage|orthopedic-padding|elastic-bandage)\.png/, "product data must not retain the rejected catalog cover images");
+
+const globalStyles = fs.readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+
+assert.match(dataFile, /padding-studio-primary\.png/, "orthopedic padding must lead with the approved horizontal studio image");
+assert.match(globalStyles, /\.product-gallery-thumbnails button\s*\{[\s\S]*?aspect-ratio:\s*1\s*\/\s*1;/, "gallery thumbnails must use a consistent square frame");
+assert.match(globalStyles, /\.product-gallery-thumbnails img\s*\{[\s\S]*?object-fit:\s*contain;/, "gallery thumbnails must preserve the full customer product image");
 assert.match(dataFile, /supportedLocales:\s*\["en"\]/, "English launch must keep supportedLocales data shape");
 assert.match(dataFile, /adminGroup:\s*2/, "new tenant metadata must default to admin group 2");
 

@@ -87,8 +87,9 @@ export const products: Product[] = [
   {
     slug: "orthopedic-padding",
     category: "Medical Bandage",
-    image: "/images/products/customer-update-2026-08/orthopedic-padding/01-customer-supplied.jpg",
+    image: "/images/products/customer-update-2026-08/orthopedic-padding/padding-studio-primary.png",
     images: [
+      "/images/products/customer-update-2026-08/orthopedic-padding/padding-studio-primary.png",
       "/images/products/customer-update-2026-08/orthopedic-padding/01-customer-supplied.jpg",
       "/images/products/customer-update-2026-08/orthopedic-padding/f85720dc-c8ea-4d8e-947c-754633fbb3dc.png",
       "/images/products/customer-update-2026-08/orthopedic-padding/02-customer-supplied.jpg",

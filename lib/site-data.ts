@@ -179,7 +179,7 @@ export const faqs = [
 ];
 
 export function text(value: LocalizedString, locale: Locale = "en") {
-  return value[locale] || value.en || Object.values(value)[0] || "";
+  return value[locale] || value.en || "";
 }
 
 export function getProduct(slug: string) {

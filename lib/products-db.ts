@@ -5,14 +5,14 @@ import { normalizeProductImages } from "@/lib/product-gallery.mjs";
 function localized(value: unknown, locale = "en") {
   if (!value || typeof value !== "object") return undefined;
   const entries = value as Record<string, unknown>;
-  const selected = entries[locale] || entries.en || Object.values(entries).find(Boolean);
+  const selected = entries[locale] || entries.en;
   return typeof selected === "string" ? selected : undefined;
 }
 
 function localizedList(value: unknown, locale = "en") {
   if (!value || typeof value !== "object") return undefined;
   const entries = value as Record<string, unknown>;
-  const selected = entries[locale] || entries.en || Object.values(entries).find(Array.isArray);
+  const selected = entries[locale] || entries.en;
   return Array.isArray(selected) ? selected.map(String).filter(Boolean) : undefined;
 }
 
@@ -24,7 +24,7 @@ function mergeProduct(row: Record<string, unknown>): Product | undefined {
     ...fallback,
     image: String(row.image_url || fallback.image),
     images: normalizeProductImages(String(row.image_url || fallback.image), row.extra_data),
-    name: { en: localized(row.name_i18n) || String(row.name || fallback.name.en) },
+    name: { en: localized(row.name_i18n) || fallback.name.en },
     summary: { en: localized(row.description_i18n) || fallback.summary.en },
     description: { en: localized(row.overview_i18n) || localized(row.description_i18n) || fallback.description.en },
     applications: localizedList(row.applications_i18n) || fallback.applications,

@@ -12,15 +12,15 @@ export type Article = {
 function localized(value: unknown, locale = "en") {
   if (!value || typeof value !== "object") return "";
   const entries = value as Record<string, unknown>;
-  return String(entries[locale] || entries.en || Object.values(entries).find(Boolean) || "");
+  return String(entries[locale] || entries.en || "");
 }
 
 function mapArticle(row: Record<string, unknown>): Article {
   return {
     slug: String(row.slug || ""),
-    title: localized(row.title_i18n) || String(row.title || ""),
-    excerpt: localized(row.excerpt_i18n) || String(row.excerpt || ""),
-    content: localized(row.content_i18n) || String(row.content || ""),
+    title: localized(row.title_i18n),
+    excerpt: localized(row.excerpt_i18n),
+    content: localized(row.content_i18n),
     publishedAt: String(row.published_at || row.created_at || ""),
     updatedAt: String(row.updated_at || row.published_at || row.created_at || "")
   };

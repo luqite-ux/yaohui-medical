@@ -65,6 +65,27 @@ assert.match(inquiryForm, /Submitting/, "inquiry form must show a pending state"
 assert.match(inquiryForm, /success|sent/i, "inquiry form must show a success state");
 assert.match(inquiryForm, /error|failed/i, "inquiry form must show a failure state");
 
+for (const file of [
+  "components/inquiry-captcha-field.tsx",
+  "app/api/captcha/route.ts",
+  "lib/inquiry-captcha.ts",
+]) {
+  assert.doesNotMatch(
+    fs.readFileSync(path.join(root, file), "utf8"),
+    /[\u3400-\u9fff]/,
+    `${file} must not expose Chinese copy on the English-only site`,
+  );
+}
+
+for (const file of ["lib/products-db.ts", "lib/articles-db.ts", "lib/site-data.ts"]) {
+  const source = fs.readFileSync(path.join(root, file), "utf8");
+  assert.doesNotMatch(
+    source,
+    /Object\.values\([^)]*\)(?:\.find\([^)]*\)|\[0\])/,
+    `${file} must not fall back from English to an unenabled locale`,
+  );
+}
+
 for (const page of ["app/page.tsx", "app/products/page.tsx"]) {
   const source = fs.readFileSync(path.join(root, page), "utf8");
   assert.match(source, /product-card-link/, `${page} must make the product card content clickable`);

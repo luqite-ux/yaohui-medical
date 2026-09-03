@@ -19,7 +19,9 @@ export function ProductGallery({ images, productName }: { images: string[]; prod
         />
       </div>
       {images.length > 1 ? (
-        <div className="product-gallery-thumbnails" aria-label={`${productName} image gallery`}>
+        <details className="product-gallery-details">
+          <summary>View product detail images</summary>
+          <div className="product-gallery-thumbnails" aria-label={`${productName} image gallery`}>
           {images.map((image, index) => (
             <button
               className={image === selected ? "is-active" : ""}
@@ -32,7 +34,8 @@ export function ProductGallery({ images, productName }: { images: string[]; prod
               <Image src={image} alt="" width={160} height={120} unoptimized />
             </button>
           ))}
-        </div>
+          </div>
+        </details>
       ) : null}
     </div>
   );

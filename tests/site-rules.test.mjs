@@ -99,12 +99,17 @@ assert.equal(crypto.createHash("sha256").update(confirmedMain).digest("hex"), "4
 assert.doesNotMatch(dataFile, /catalog-(plaster-bandage|orthopedic-padding|elastic-bandage)\.png/, "product data must not retain the rejected catalog cover images");
 
 const globalStyles = fs.readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+const productDetailPage = fs.readFileSync(new URL("../app/products/[slug]/page.tsx", import.meta.url), "utf8");
+const galleryComponent = fs.readFileSync(new URL("../components/product-gallery.tsx", import.meta.url), "utf8");
 
 assert.match(dataFile, /padding-studio-primary\.png/, "orthopedic padding must lead with the approved horizontal studio image");
 assert.match(dataFile, /pop-studio-primary\.png/, "Plaster of Paris bandage must lead with the approved studio image");
 assert.match(dataFile, /elastic-studio-primary\.png/, "elastic bandage must lead with the approved studio image");
 assert.match(globalStyles, /\.product-gallery-thumbnails button\s*\{[\s\S]*?aspect-ratio:\s*1\s*\/\s*1;/, "gallery thumbnails must use a consistent square frame");
 assert.match(globalStyles, /\.product-gallery-thumbnails img\s*\{[\s\S]*?object-fit:\s*contain;/, "gallery thumbnails must preserve the full customer product image");
+assert.match(productDetailPage, /product-detail-layout/, "product detail must use a dedicated image-and-summary layout");
+assert.match(productDetailPage, /product-detail-sections/, "product specifications must appear below the product summary");
+assert.match(galleryComponent, /product-gallery-details/, "raw detail photos must be collapsed outside the primary product image");
 assert.match(dataFile, /supportedLocales:\s*\["en"\]/, "English launch must keep supportedLocales data shape");
 assert.match(dataFile, /adminGroup:\s*2/, "new tenant metadata must default to admin group 2");
 

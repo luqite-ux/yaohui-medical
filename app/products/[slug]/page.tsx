@@ -28,42 +28,41 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
       <PageHero eyebrow={product.category} title={product.name.en} intro={product.summary.en} />
-      <section className="section section-white">
-        <div className="container page-grid">
-          <div className="page-card">
+      <section className="section section-white product-detail-section">
+        <div className="container product-detail-layout">
+          <div className="product-media-panel">
             <ProductGallery images={product.images} productName={product.name.en} />
-            <h2>Product Overview</h2>
-            <p>{product.description.en}</p>
           </div>
-          <div className="spec-grid">
-            <div className="spec-card">
-              <h3>Specifications</h3>
-              <ul>
-                {product.specs.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+          <div className="product-summary-panel">
+            <p className="eyebrow">Product Overview</p>
+            <h2>Designed for reliable orthopedic supply.</h2>
+            <p>{product.description.en}</p>
+            <div className="product-summary-highlights">
+              {product.highlights.slice(0, 3).map((item) => <span key={item}>{item}</span>)}
             </div>
-            <div className="spec-card">
-              <h3>Applications</h3>
-              <ul>
-                {product.applications.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="spec-card">
-              <h3>Highlights</h3>
-              <ul>
-                {product.highlights.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="spec-card">
-              <h3>B2B Supply Notes</h3>
-              <p>Share target size, quantity, packing style and destination market. Yaohui Medical will review the inquiry and respond with project-specific supply information.</p>
-            </div>
+            <a className="button button-primary" href="/contact">Request a Quote</a>
+          </div>
+        </div>
+        <div className="container product-detail-sections">
+          <div className="spec-card product-detail-card product-detail-card-wide">
+            <h3>Specifications</h3>
+            <ul>
+              {product.specs.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="spec-card product-detail-card">
+            <h3>Applications</h3>
+            <ul>
+              {product.applications.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="spec-card product-detail-card">
+            <h3>B2B Supply Notes</h3>
+            <p>Share target size, quantity, packing style and destination market. Yaohui Medical will review the inquiry and respond with project-specific supply information.</p>
           </div>
         </div>
       </section>

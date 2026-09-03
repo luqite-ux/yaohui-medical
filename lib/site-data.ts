@@ -61,8 +61,9 @@ export const products: Product[] = [
   {
     slug: "plaster-of-paris-bandage",
     category: "Medical Bandage",
-    image: "/images/products/customer-update-2026-08/plaster-of-paris-bandage/01-customer-confirmed-main.jpg",
+    image: "/images/products/customer-update-2026-08/plaster-of-paris-bandage/pop-studio-primary.png",
     images: [
+      "/images/products/customer-update-2026-08/plaster-of-paris-bandage/pop-studio-primary.png",
       "/images/products/customer-update-2026-08/plaster-of-paris-bandage/01-customer-confirmed-main.jpg",
       "/images/products/customer-update-2026-08/plaster-of-paris-bandage/19db415b-cce0-4bf5-85d0-d3397644cc5b.png",
       "/images/products/customer-update-2026-08/plaster-of-paris-bandage/6b5f4de2-b4a6-47ea-bbda-a2ca97e62ede.jpg",
@@ -111,8 +112,9 @@ export const products: Product[] = [
   {
     slug: "elastic-bandage",
     category: "Medical Bandage",
-    image: "/images/products/gallery/elastic-bandage/03-blue-line.webp",
+    image: "/images/products/customer-update-2026-08/elastic-bandage/elastic-studio-primary.png",
     images: [
+      "/images/products/customer-update-2026-08/elastic-bandage/elastic-studio-primary.png",
       "/images/products/gallery/elastic-bandage/03-blue-line.webp",
       "/images/products/customer-update-2026-08/elastic-bandage/bb5e5696-b7eb-48ec-a693-509f39432dcd.png",
       "/images/products/gallery/elastic-bandage/01-unbleached.webp",

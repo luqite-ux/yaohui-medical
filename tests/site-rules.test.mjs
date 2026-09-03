@@ -101,6 +101,8 @@ assert.doesNotMatch(dataFile, /catalog-(plaster-bandage|orthopedic-padding|elast
 const globalStyles = fs.readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
 
 assert.match(dataFile, /padding-studio-primary\.png/, "orthopedic padding must lead with the approved horizontal studio image");
+assert.match(dataFile, /pop-studio-primary\.png/, "Plaster of Paris bandage must lead with the approved studio image");
+assert.match(dataFile, /elastic-studio-primary\.png/, "elastic bandage must lead with the approved studio image");
 assert.match(globalStyles, /\.product-gallery-thumbnails button\s*\{[\s\S]*?aspect-ratio:\s*1\s*\/\s*1;/, "gallery thumbnails must use a consistent square frame");
 assert.match(globalStyles, /\.product-gallery-thumbnails img\s*\{[\s\S]*?object-fit:\s*contain;/, "gallery thumbnails must preserve the full customer product image");
 assert.match(dataFile, /supportedLocales:\s*\["en"\]/, "English launch must keep supportedLocales data shape");

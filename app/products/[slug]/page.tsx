@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { ProductGallery } from "@/components/product-gallery";
-import { InquiryBand, PageHero } from "@/components/site-shell";
+import { InquiryBand } from "@/components/site-shell";
 import { getProductBySlug } from "@/lib/products-db";
 
 export const dynamic = "force-dynamic";
@@ -27,20 +27,24 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   return (
     <main>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }} />
-      <PageHero eyebrow={product.category} title={product.name.en} intro={product.summary.en} />
       <section className="section section-white product-detail-section">
         <div className="container product-detail-layout">
           <div className="product-media-panel">
             <ProductGallery images={product.images} productName={product.name.en} />
           </div>
           <div className="product-summary-panel">
-            <p className="eyebrow">Product Overview</p>
-            <h2>Designed for reliable orthopedic supply.</h2>
+            <div className="product-detail-title">
+              <p className="eyebrow">{product.category}</p>
+              <h1>{product.name.en}</h1>
+              <p>{product.summary.en}</p>
+            </div>
+            <div className="product-detail-divider" />
+            <h2>About this product</h2>
             <p>{product.description.en}</p>
             <div className="product-summary-highlights">
               {product.highlights.slice(0, 3).map((item) => <span key={item}>{item}</span>)}
             </div>
-            <a className="button button-primary" href="/contact">Request a Quote</a>
+            <a className="primary-button" href="/contact">Request a Quote</a>
           </div>
         </div>
         <div className="container product-detail-sections">

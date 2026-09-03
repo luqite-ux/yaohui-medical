@@ -105,11 +105,19 @@ const galleryComponent = fs.readFileSync(new URL("../components/product-gallery.
 assert.match(dataFile, /padding-studio-primary\.png/, "orthopedic padding must lead with the approved horizontal studio image");
 assert.match(dataFile, /pop-studio-primary\.png/, "Plaster of Paris bandage must lead with the approved studio image");
 assert.match(dataFile, /elastic-studio-primary\.png/, "elastic bandage must lead with the approved studio image");
-assert.match(globalStyles, /\.product-gallery-thumbnails button\s*\{[\s\S]*?aspect-ratio:\s*1\s*\/\s*1;/, "gallery thumbnails must use a consistent square frame");
-assert.match(globalStyles, /\.product-gallery-thumbnails img\s*\{[\s\S]*?object-fit:\s*contain;/, "gallery thumbnails must preserve the full customer product image");
+assert.match(globalStyles, /\.product-gallery-rail button\s*\{[\s\S]*?aspect-ratio:\s*1\s*\/\s*1;/, "gallery thumbnails must use a consistent square frame");
+assert.match(globalStyles, /\.product-gallery-rail img\s*\{[\s\S]*?object-fit:\s*contain;/, "gallery thumbnails must preserve the full customer product image");
 assert.match(productDetailPage, /product-detail-layout/, "product detail must use a dedicated image-and-summary layout");
 assert.match(productDetailPage, /product-detail-sections/, "product specifications must appear below the product summary");
-assert.match(galleryComponent, /product-gallery-details/, "raw detail photos must be collapsed outside the primary product image");
+assert.doesNotMatch(productDetailPage, /<PageHero/, "product title must sit beside the gallery instead of in a separate oversized hero");
+assert.match(productDetailPage, /product-detail-title/, "product title and summary must sit in the right-side product panel");
+assert.match(productDetailPage, /className="primary-button"[^>]*>Request a Quote</, "product quote CTA must use the site's visible primary button style");
+assert.match(galleryComponent, /product-gallery-rail/, "product thumbnails must use an always-visible vertical rail");
+assert.match(galleryComponent, /product-gallery-zoom/, "desktop gallery must provide a hover zoom panel");
+assert.match(galleryComponent, /onPointerMove/, "gallery zoom must follow the pointer position");
+assert.match(galleryComponent, /product-gallery-dialog/, "main image must support an accessible full-view dialog");
+assert.match(globalStyles, /\.product-media-panel\s*\{[\s\S]*?position:\s*sticky;/, "desktop product media must remain sticky while product information is read");
+assert.match(globalStyles, /\.product-gallery-zoom\s*\{[\s\S]*?width:\s*clamp\(360px,\s*38vw,\s*580px\)/, "zoom panel must stay within a standard desktop viewport");
 assert.match(dataFile, /supportedLocales:\s*\["en"\]/, "English launch must keep supportedLocales data shape");
 assert.match(dataFile, /adminGroup:\s*2/, "new tenant metadata must default to admin group 2");
 

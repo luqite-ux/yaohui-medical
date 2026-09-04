@@ -34,6 +34,17 @@ assert.doesNotMatch(fs.readFileSync(path.join(root, "components", "animated-stat
 assert.match(combined, /IntersectionObserver/, "count-up motion must start from viewport visibility");
 assert.match(combined, /requestAnimationFrame/, "count-up motion must update on animation frames");
 assert.match(combined, /prefers-reduced-motion/, "count-up motion must respect reduced-motion preferences");
+assert.ok(fs.existsSync(path.join(root, "components", "scroll-reveal.tsx")), "homepage sections must have a reusable scroll reveal component");
+const scrollReveal = fs.readFileSync(path.join(root, "components", "scroll-reveal.tsx"), "utf8");
+assert.match(scrollReveal, /IntersectionObserver/, "section reveals must start when they enter the viewport");
+assert.match(scrollReveal, /prefers-reduced-motion:\s*reduce/, "section reveals must immediately display for reduced-motion users");
+const homePage = fs.readFileSync(path.join(root, "app", "page.tsx"), "utf8");
+for (const motionGroup of ["manufacturing-motion", "supply-motion", "faq-motion"]) {
+  assert.match(homePage, new RegExp(motionGroup), `${motionGroup} must opt into homepage entrance motion`);
+}
+assert.ok((homePage.match(/delay=\{index \* 80\}/g) || []).length >= 2, "both three-card groups must stagger every card");
+assert.match(homePage, /delay=\{index \* 70\}/, "all FAQ cards must stagger into view");
+assert.match(combined, /@media\s*\(prefers-reduced-motion:\s*reduce\)/, "CSS motion must provide a reduced-motion fallback");
 assert.match(combined, /\.stat-card\s*>\s*span/, "stat labels must not override nested animated number sizing");
 assert.match(fs.readFileSync(path.join(root, "components", "animated-stat-value.tsx"), "utf8"), /stat-value-compact/, "six-digit statistics must use the compact value treatment");
 assert.match(combined, /\.stat-value-compact/, "compact statistics must define a bounded font size");

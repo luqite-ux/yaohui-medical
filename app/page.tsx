@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, BadgeCheck, Factory, Globe2, PackageCheck, Sparkles } from "lucide-react";
 import { InquiryBand } from "@/components/site-shell";
 import { AnimatedStatValue } from "@/components/animated-stat-value";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { company, factoryHighlights, faqs, heroStats } from "@/lib/site-data";
 import { listProducts } from "@/lib/products-db";
 
@@ -75,8 +76,9 @@ export default async function HomePage() {
       </section>
 
       <section className="section section-light">
-        <div className="container page-grid">
-          <div>
+        <div className="container page-grid manufacturing-motion">
+          <ScrollReveal direction="left" className="motion-copy">
+            <div>
             <p className="eyebrow">Manufacturing Strength</p>
             <h2>Purpose-built workshops for plaster bandage and padding production.</h2>
             <p>
@@ -85,71 +87,74 @@ export default async function HomePage() {
             <Link className="primary-button" href="/manufacturing">
               Explore Manufacturing <ArrowRight size={18} />
             </Link>
-          </div>
+            </div>
+          </ScrollReveal>
           <div className="feature-grid">
-            {factoryHighlights.slice(0, 3).map((item) => (
-              <div className="feature-card" key={item}>
+            {factoryHighlights.slice(0, 3).map((item, index) => (
+              <ScrollReveal className="motion-card" delay={index * 80} key={item}>
+                <div className="feature-card">
                 <div className="icon-badge">
                   <Factory size={22} />
                 </div>
                 <h3>{item}</h3>
                 <p>Built around practical medical bandage production and packing workflows.</p>
-              </div>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
       <section className="section section-white">
-        <div className="container">
-          <div className="section-heading">
+        <div className="container supply-motion">
+          <ScrollReveal className="section-heading">
+            <div>
             <p className="eyebrow">Why Yaohui</p>
             <h2>Clear supply communication for medical product importers.</h2>
-          </div>
+            </div>
+          </ScrollReveal>
           <div className="feature-grid">
-            <div className="feature-card">
+            {[
+              { icon: <BadgeCheck size={22} />, title: "Documentation Support", copy: "ISO 13485:2016, CE/MDR documentation and export sales documents can be coordinated for qualified projects." },
+              { icon: <PackageCheck size={22} />, title: "OEM Packing", copy: "Specifications, packing format and label requirements can be reviewed for long-term distributor programs." },
+              { icon: <Globe2 size={22} />, title: "Export Experience", copy: "Products are supplied to Southeast Asia, Europe, the Middle East and Africa through B2B medical supply channels." },
+            ].map((item, index) => (
+              <ScrollReveal className="motion-card" delay={index * 80} key={item.title}>
+                <div className="feature-card">
               <div className="icon-badge">
-                <BadgeCheck size={22} />
+                    {item.icon}
               </div>
-              <h3>Documentation Support</h3>
-              <p>ISO 13485:2016, CE/MDR documentation and export sales documents can be coordinated for qualified projects.</p>
-            </div>
-            <div className="feature-card">
-              <div className="icon-badge">
-                <PackageCheck size={22} />
+                  <h3>{item.title}</h3>
+                  <p>{item.copy}</p>
               </div>
-              <h3>OEM Packing</h3>
-              <p>Specifications, packing format and label requirements can be reviewed for long-term distributor programs.</p>
-            </div>
-            <div className="feature-card">
-              <div className="icon-badge">
-                <Globe2 size={22} />
-              </div>
-              <h3>Export Experience</h3>
-              <p>Products are supplied to Southeast Asia, Europe, the Middle East and Africa through B2B medical supply channels.</p>
-            </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="section section-light">
-        <div className="container page-grid">
-          <div>
+        <div className="container page-grid faq-motion">
+          <ScrollReveal direction="left" className="motion-copy">
+            <div>
             <p className="eyebrow">FAQ Preview</p>
             <h2>Fast answers before you send an inquiry.</h2>
             <p>Product specifications, samples, OEM support and lead time details are summarized for overseas buyers.</p>
             <Link className="secondary-button" href="/faq">
               Read FAQ
             </Link>
-          </div>
+            </div>
+          </ScrollReveal>
           <div className="faq-grid">
-            {faqs.slice(0, 4).map((faq) => (
-              <article className="faq-card" key={faq.question}>
+            {faqs.slice(0, 4).map((faq, index) => (
+              <ScrollReveal direction="right" className="motion-card" delay={index * 70} key={faq.question}>
+                <article className="faq-card">
                 <h3>
                   <Sparkles size={18} /> {faq.question}
                 </h3>
                 <p>{faq.answer}</p>
-              </article>
+                </article>
+              </ScrollReveal>
             ))}
           </div>
         </div>

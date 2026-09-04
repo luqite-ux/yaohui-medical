@@ -156,6 +156,7 @@ assert.match(dataFile, /adminGroup:\s*2/, "new tenant metadata must default to a
 const nextConfig = fs.readFileSync(path.join(root, "next.config.mjs"), "utf8");
 assert.match(nextConfig, /source:\s*['"]\/admin['"]/, "customer site must proxy /admin to huanqiu-admin");
 assert.match(nextConfig, /source:\s*['"]\/api\/admin\/:path\*['"]/, "customer site must proxy backend admin APIs");
+assert.match(nextConfig, /source:\s*['"]\/login['"][\s\S]*?destination:\s*['"]\/admin\/login['"]/, "shared admin login redirects must land on the customer admin login page");
 
 const loginRoute = fs.readFileSync(path.join(root, "app", "api", "auth", "login", "route.ts"), "utf8");
 assert.match(loginRoute, /hq_tenant_id/, "login route must set tenant cookie for portal mode");
